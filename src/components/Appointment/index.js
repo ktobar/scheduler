@@ -11,7 +11,7 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 
 export default function Appointment(props) {
-  console.log("IN INDEX", props.interview)
+  // console.log("IN INDEX", props.interview)
   
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
