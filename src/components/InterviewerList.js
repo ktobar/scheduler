@@ -6,7 +6,6 @@ import InterviewerListItem from "components/InterviewerListItem";
 import "components/InterviewerList.scss";
 
 export default function InterviewerList(props) {
-  console.log("rendering InterviewerList component")
   const { interviewers } = props;
   const listOfInterview = interviewers.map(interviewer => {
 
@@ -31,4 +30,4 @@ export default function InterviewerList(props) {
       </ul>
     </section>
   );
-}
+};

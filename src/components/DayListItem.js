@@ -10,14 +10,14 @@ export default function DayListItem(props) {
     
     if (spot === 0) {
       return "no spots remaining"
-    } 
+    }; 
     if (spot === 1) {
       return "1 spot remaining"
-    }
+    };
     if (spot > 1) {
       return `${spot} spots remaining`
-    } 
-  }
+    };
+  };
   let availableSpot = formatSpots(props);
 
   let noSpot = false;
@@ -37,4 +37,4 @@ export default function DayListItem(props) {
       <h3 className="text--light">{availableSpot}</h3>
     </li>
   );
-}
+};

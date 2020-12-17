@@ -20,25 +20,26 @@ export default function useApplicationData(initial) {
     ])
     .then((all)=>{
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}))
-    })
-  }, [])
+    });
+  }, []);
   //remaing spots feature
   const updateSpots = (day, days, appointments) => {
-    const daysCopy = [...days]
+    const daysCopy = [...days]; //copy to avoid mutating state
     const dayObj = daysCopy.find(d => d.name === day);
-    const appointmentIds = dayObj.appointments
+    const appointmentIds = dayObj.appointments;
     let spots = 0;
+    //increment spot base on null value
     for (let id of appointmentIds){
       if (!appointments[id].interview) {
         spots++
-      }
-    }  
-    dayObj.spots = spots;//this is safe because its a copy
-    return daysCopy
+      };
+    }; 
+    dayObj.spots = spots;
+    return daysCopy;
   }
 
   
-  function bookInterview(id, interview, edit) {
+  function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -50,8 +51,8 @@ export default function useApplicationData(initial) {
 
     return axios.put(`/api/appointments/${id}`, {interview})
       .then(()=>{
-       const days = updateSpots(state.day, state.days, appointments)
-        setState(prev => ({...prev, appointments, days}))
+        const days = updateSpots(state.day, state.days, appointments);
+        setState(prev => ({...prev, appointments, days}));
       })
   };
 
@@ -70,8 +71,7 @@ export default function useApplicationData(initial) {
       .then(()=> {
         const days = updateSpots(state.day, state.days, appointments)
         setState(prev => ({...prev, appointments, days}))
-        // setState(prev => ({...prev, days}))
-      }) 
+      });
   };
 
   return {
@@ -79,5 +79,5 @@ export default function useApplicationData(initial) {
     setDay,
     bookInterview,
     cancelInterview
-  }
+  };
 };

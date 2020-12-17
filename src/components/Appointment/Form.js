@@ -13,12 +13,11 @@ export default function Form(props) {
     setInterviewer(null);
   }
   const cancel = () => {
-    reset()
-    props.onCancel()
+    reset();
+    props.onCancel();
   }
   const onSave = function(){
-    console.log("CALLING onSave")
-    props.onSave(name, interviewer)
+    props.onSave(name, interviewer);
   }
   return(
     <main className="appointment__card appointment__card--create">
@@ -39,7 +38,8 @@ export default function Form(props) {
         <InterviewerList 
           interviewers={props.interviewers} 
           value={interviewer} 
-          setInterviewer={setInterviewer} /> 
+          setInterviewer={setInterviewer} 
+        /> 
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">

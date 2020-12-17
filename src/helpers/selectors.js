@@ -3,11 +3,11 @@ export function getAppointmentsForDay(state, day) {
 
   if (!foundDay) {
     return [];
-  }
+  };
 
-  const appointment = foundDay.appointments.map(appointmentId => state.appointments[appointmentId])
+  const appointment = foundDay.appointments.map(appointmentId => state.appointments[appointmentId]);
   
-  return appointment
+  return appointment;
 };
 
 export function getInterviewsForDay(state, day) {
@@ -16,11 +16,11 @@ export function getInterviewsForDay(state, day) {
 
   if (!foundDay) {
     return [];
-  }
+  };
 
-  const interview = foundDay.interviewers.map(interviewId => state.interviewers[interviewId])
+  const interview = foundDay.interviewers.map(interviewId => state.interviewers[interviewId]);
  
-  return interview
+  return interview;
 };
 
 export function getInterview(state, interview) {
@@ -32,5 +32,5 @@ export function getInterview(state, interview) {
       student: interview.student,
       interviewer: state.interviewers[interview.interviewer]
     };
-  }
+  };
 };

@@ -32,22 +32,22 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    transition(SAVING)
+    transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(()=>transition(SHOW))
-    .catch(()=>transition(ERROR_SAVE, true))
+    .catch(()=>transition(ERROR_SAVE, true));
     
   }
 
   function destroy() {
-    transition(DELETE, true)
+    transition(DELETE, true);
     props.cancelInterview(props.id)
     .then(()=>transition(EMPTY))
-    .catch(()=>transition(ERROR_DELETE, true))
+    .catch(()=>transition(ERROR_DELETE, true));
   };
 
   function confirm() {
-    transition(CONFIRM)
+    transition(CONFIRM);
   }
 
   return (
