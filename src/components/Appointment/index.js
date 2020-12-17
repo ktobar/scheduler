@@ -11,7 +11,7 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 
 export default function Appointment(props) {
-  // console.log("IN INDEX", props.interview)
+  console.log("rendering Appointment component")
   
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -50,16 +50,6 @@ export default function Appointment(props) {
     transition(CONFIRM)
   }
 
-  function edit(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
-    transition(EDIT)
-    props.bookInterview(props.id, interview)
-    .then(()=>transition(SHOW)
-    )
-  }
   return (
     <article className="appointment">
       <Header 
@@ -76,7 +66,7 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={confirm}
-          onEdit={edit}
+          onEdit={() => transition(EDIT)}
         />
       )}
       
@@ -112,7 +102,7 @@ export default function Appointment(props) {
         <Form
           name={props.interview.student} 
           interviewers={props.interviewers} 
-          onCancel={() => back()} 
+          onCancel={back} 
           onSave={save}
           interviewer={props.interview.interviewer.id}    
         />

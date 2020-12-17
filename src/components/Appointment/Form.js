@@ -4,6 +4,8 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
+
+  console.log("rendering Form component")
   const [name, setName] = useState(props.name || '');
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const reset = () => {
@@ -14,7 +16,10 @@ export default function Form(props) {
     reset()
     props.onCancel()
   }
-
+  const onSave = function(){
+    console.log("CALLING onSave")
+    props.onSave(name, interviewer)
+  }
   return(
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -24,7 +29,7 @@ export default function Form(props) {
             name={name}
             type="text"
             placeholder={"Enter Student Name"}
-            onChange={(event)=>{setName(event.target.value)}}
+            onChange={event=>setName(event.target.value)}
             value={name}
             /*
               This must be a controlled component
@@ -38,8 +43,8 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button onClick={()=> cancel()} danger>Cancel</Button>
-          <Button onClick={()=> props.onSave(name, interviewer)} confirm>Save</Button>
+          <Button onClick={cancel} danger>Cancel</Button>
+          <Button onClick={onSave} confirm>Save</Button>
         </section>
       </section>
     </main>
